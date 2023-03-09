@@ -4,11 +4,12 @@ class BookmarksController < ApplicationController
 
   def new
     # need @list in bookmarks form
-    @bookmark.list = Bookmark.new
+    @bookmark = Bookmark.new
   end
 
   def create
     @bookmark = Bookmark.new(bookmark_params)
+    @bookmark.list = @bookmark
   end
 
 
