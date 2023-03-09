@@ -1,17 +1,24 @@
 class BookmarksController < ApplicationController
+  # locate the list
+  before_action :set_list, only: %i[new create]
+
   def new
     # need @list in bookmarks form
-    @list = List.find(params[:id])
-    @bookmark = Bookmark.new
+    @bookmark.list = Bookmark.new
   end
 
   def create
-    @bookmark = Bookmark.create(bookmark_params)
+    @bookmark = Bookmark.new(bookmark_params)
   end
+
 
   private
 
   def lists_article
     params.require(:bookmark).permit(:comment)
+  end
+
+  def set_list
+    @list = List.find(params[:list_id])
   end
 end
