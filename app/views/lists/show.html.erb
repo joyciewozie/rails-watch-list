@@ -5,6 +5,9 @@
 <ul class="list-group">
   <% @list.bookmarks.each do |bookmark| %>
     <li class="list-group-item"><%= bookmark.comment %></li>
+    <%= link_to "Delete bookmark",
+        bookmark,
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+    %>
   <% end %>
 </ul>
-<br>
